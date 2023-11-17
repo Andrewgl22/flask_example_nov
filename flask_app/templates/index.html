@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1 class="my-text">My First HTML Page</h1>
+    <p>Some more text cool right?</p>
+
+    <h1>Hello {{session['username']}} {{session['email']}} {{session['age']}}</h1>
+
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Country</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="/user/{{user.id}}">{{user.username}}</a></td>
+                    <td>{{user.email}}</td>
+                    <td><a href="/user/{{user.id}}/edit">Edit User</a></td>
+                    <td><a href="/user/{{user.id}}/delete">Delete User</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>
